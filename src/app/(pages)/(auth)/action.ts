@@ -9,9 +9,10 @@ import { cookies } from "next/headers"
 
 import { redirect } from "next/navigation"
 
-import { verify } from "@node-rs/argon2";
+import { hash, verify } from "@node-rs/argon2";
 
-import { type signInFormProps } from "@/components/forms/auth/signin";
+import type { signInFormProps } from "@/components/forms/auth/signin";
+import type { signUpFormProps } from "@/components/forms/auth/signup";
 //#endregion
 
 export const signInAction = async (data: signInFormProps): Promise<{ error: string }> => {
@@ -41,8 +42,8 @@ export const signInAction = async (data: signInFormProps): Promise<{ error: stri
          parallelism: 1,
       })
 
-      if(!isPasswordValid)
-         return { error: "Incorrect username or password."}
+      if (!isPasswordValid)
+         return { error: "Incorrect username or password." }
 
       // Create user session using Lucia
       const session = await lucia.createSession(user.id.toString(), {})
@@ -59,60 +60,60 @@ export const signInAction = async (data: signInFormProps): Promise<{ error: stri
    }
 }
 
-// export const signUp = async (data: ISignUp): Promise<{ error: string }> => {
+export const signUpAction = async (data: signUpFormProps): Promise<{ error: string }> => {
 
-//    try {
+   try {
 
-//       // Check if email exist in the db
-//       const existingEmail = await db.user.findFirst({
-//          where: {
-//             email: {
-//                equals: data.email,
-//                mode: "insensitive"
-//             }
-//          }
-//       })
+      // Check if email exist in the db
+      const existingEmail = await db.user.findFirst({
+         where: {
+            email: {
+               equals: data.email,
+               mode: "insensitive"
+            }
+         }
+      })
 
-//       if (existingEmail) {
-//          return { error: "Email already exist." }
-//       }
+      if (existingEmail) {
+         return { error: "Email already exist." }
+      }
 
-//       // Generate hash password
-//       const passwordHash = await hash(data.password, {
-//          memoryCost: 19456,
-//          timeCost: 2,
-//          outputLen: 32,
-//          parallelism: 1,
-//       })
+      // Generate hash password
+      const passwordHash = await hash(data.password, {
+         memoryCost: 19456,
+         timeCost: 2,
+         outputLen: 32,
+         parallelism: 1,
+      })
 
-//       // Create new user
-//       const user = await db.user.create({
-//          data: {
-//             fullName: data.fullName,
-//             email: data.email,
-//             password: passwordHash,
-//             isDeleted: false
-//          },
-//       })
+      // Create new user
+      const user = await db.user.create({
+         data: {
+            fullName: data.fullName,
+            email: data.email,
+            password: passwordHash,
+            isDeleted: false
+         },
+      })
 
-//       // Create user session using Lucia
-//       const session = await lucia.createSession(user.id.toString(), {})
-//       const sessionCookie = await lucia.createSessionCookie(session.id)
-//       cookies().set(
-//          sessionCookie.name,
-//          sessionCookie.value,
-//          sessionCookie.attributes
-//       )
+      // Create user session using Lucia
+      const session = await lucia.createSession(user.id.toString(), {})
+      const sessionCookie = await lucia.createSessionCookie(session.id)
+      cookies().set(
+         sessionCookie.name,
+         sessionCookie.value,
+         sessionCookie.attributes
+      )
 
-//       return { error: "" }
-//    } catch (error) {
-//       console.log(error)
-//       return { error: "Registration failed. Please try again." }
-//    }
-// }
+      return { error: "" }
+   } catch (error) {
+      console.log(error)
+      return { error: "Registration failed. Please try again." }
+   }
+}
 
-export const logOut = async () => {
+export const logOutAction = async () => {
    const sessionCookie = await lucia.createBlankSessionCookie()
    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
-   return redirect('/')
+   return redirect('/signin')
 }

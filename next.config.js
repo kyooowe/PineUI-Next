@@ -9,15 +9,6 @@ const nextConfig = {
    experimental: {
       serverComponentsExternalPackages: ["@node-rs/argon2"]
    },
-   redirects: async () => {
-      return [
-         {
-            source: '/',
-            destination: '/signin',
-            permanent: true,
-         }
-      ]
-   }
 };
 
 export default nextConfig;

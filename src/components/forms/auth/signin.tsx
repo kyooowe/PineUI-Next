@@ -68,7 +68,7 @@ const SignInForm = () => {
 			const { error } = await signInAction(data)
 
 			if (error === "")
-				redirect("/dashboard")
+				redirect("/")
 			else {
 				setHasError(true)
 				setErrorMessage(error)
