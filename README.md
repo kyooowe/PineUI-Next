@@ -1,9 +1,9 @@
 <img style="border-radius: 15px;" src="https://github.com/kyooowe/PineUI-Next/blob/master/public/github-bg.png" />
 
 # Pine UI 
-[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![tRPC](https://img.shields.io/badge/tRPC-%232596BE.svg?style=for-the-badge&logo=tRPC&logoColor=white)](https://trpc.io/)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white)](https://www.radix-ui.com/)
@@ -25,7 +25,7 @@ git clone https://github.com/kyooowe/PineUI-Next.git
 That will scaffold a new folder with the latest version of 🚀 **Pine UI (NextJS Version)**
 
 # Installation
-Create a `.env` or `.env.local` file in the project directory (apps/api and apps/dashoard) with your environment variables. You can copy the contents of the `.env.example` file and replace the values  with your own. <br /> <br />
+Create a `.env` or `.env.local` file in the project directory with your environment variables. You can copy the contents of the `.env.example` file and replace the values  with your own. <br /> <br />
 Install dependencies by running the command in the terminal (root folder)
 ```
 npm install
@@ -53,9 +53,9 @@ Experience the impressive features and functionality you'll have at your fingert
 # Framework / Libraries
 This project uses the following frameworks and libraries:
 
- - [🟢 Node.js](https://nodejs.org/) - an open-source, cross-platform, back-end JavaScript runtime environment that executes JavaScript code outside a web browser.
  - [⚛️ React](https://react.dev/) - a free and open-source front-end JavaScript library for building user interfaces based on UI components.
  - [🚀 NextJS](https://nextjs.org/) - a React framework for building full-stack web applications.
+ - [🔗 tRPC](https://trpc.io/) - a framework for building end-to-end typesafe APIs with TypeScript, enabling seamless integration between your front-end and back-end with automatic type inference.
  - [🔷 TypeScript](https://www.typescriptlang.org/) - an open-source programming language developed by Microsoft that builds on JavaScript by adding static type definitions.
  - [🎨 Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework that provides a set of pre-designed utility classes to quickly build user interfaces.
  - [🛠️ Radix UI](https://radix-ui.com/) - a set of low-level, accessible components for building high-quality design systems and web applications.
