@@ -7,17 +7,14 @@ const MainLayout = async ({ children }: Readonly<{
 	children: React.ReactNode;
 }>) => {
 	return (
-		<div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-			<div className="hidden border-r md:block">
-				<SidebarLayout />
-			</div>
-			<div className="flex flex-col">
+		<div className="flex">
+			<SidebarLayout />
+			<main className="w-full flex-1 overflow-hidden">
 				<HeaderLayout />
-
-				<main className="flex flex-1 flex-col gap-4 p-4 bg-muted lg:gap-6 lg:p-6">
+				<div className="py-6 px-8 bg-gray-50 h-full">
 					{children}
-				</main>
-			</div>
+				</div>
+			</main>
 		</div>
 	)
 }

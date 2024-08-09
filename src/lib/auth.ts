@@ -1,5 +1,4 @@
 import { Lucia } from 'lucia'
-import type { Session, User } from 'lucia'
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma'
 import { db } from '@/server/db'
 import { cookies } from 'next/headers'

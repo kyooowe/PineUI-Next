@@ -5,16 +5,12 @@ import Link from "next/link"
 
 import {
 	CircleUser,
-	Home,
 	Menu,
 	Bell,
 	Settings,
 	ListCollapse,
 	ListChecks,
 	BellPlus,
-	AppWindow,
-	Code,
-	Sparkles,
 	User,
 	Keyboard,
 	LogOut
@@ -29,13 +25,6 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator
 } from "@/components/ui/breadcrumb"
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -52,6 +41,7 @@ import {
 } from "@/components/ui/sheet"
 
 import { logOutAction } from "@/app/(pages)/(auth)/action"
+import { navItems } from "@/constant/nav"
 //#endregion
 
 const HeaderLayout = () => {
@@ -71,54 +61,19 @@ const HeaderLayout = () => {
 				</SheetTrigger>
 				<SheetContent side="left" className="flex flex-col">
 					<nav className="grid gap-2 text-sm font-medium">
-						<Link
-							href="#"
-							className="flex items-center gap-3 rounded-lg px-3 py-2 text-primary transition-all hover:text-primary"
-						>
-							<Home className="h-4 w-4" />
-							Dashboard
-						</Link>
-						<Link
-							href="#"
-							className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-						>
-							<AppWindow className="h-4 w-4" />
-							CRUD
-						</Link>
-						<Link
-							href="#"
-							className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-						>
-							<Code className="h-4 w-4" />
-							Components
-							<Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-								6
-							</Badge>
-						</Link>
-						<Link
-							href="#"
-							className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-						>
-							<Sparkles className="h-4 w-4" />
-							Starter
-						</Link>
+						{
+							navItems.map((item, index) => (
+								<Link
+									key={index}
+									href={item.href}
+									className="flex items-center gap-3 rounded-lg px-3 py-2 text-primary transition-all hover:text-primary"
+								>
+									{item.mIcon}
+									{item.title}
+								</Link>
+							))
+						}
 					</nav>
-					<div className="mt-auto">
-						<Card>
-							<CardHeader>
-								<CardTitle>Upgrade to Pro</CardTitle>
-								<CardDescription>
-									Unlock all features and get unlimited access to our
-									support team.
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<Button size="sm" className="w-full">
-									Upgrade
-								</Button>
-							</CardContent>
-						</Card>
-					</div>
 				</SheetContent>
 			</Sheet>
 
@@ -152,13 +107,17 @@ const HeaderLayout = () => {
 					<DropdownMenuSeparator />
 					<DropdownMenuItem>
 						<BellPlus className="mr-2 h-4 w-4" />
-						<span className="mr-8">Student #1 - Edited</span>
-						<DropdownMenuShortcut>1hr ago</DropdownMenuShortcut>
+						<span className="mr-8">Student 01-9001</span>
+						<DropdownMenuShortcut>
+							<Badge variant="destructive">Deleted</Badge>
+						</DropdownMenuShortcut>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<BellPlus className="mr-2 h-4 w-4" />
-						<span className="mr-8">Student #2 - Deleted</span>
-						<DropdownMenuShortcut>21hrs ago</DropdownMenuShortcut>
+						<span className="mr-8">Student 01-9002</span>
+						<DropdownMenuShortcut>
+						<Badge>Edited</Badge>
+						</DropdownMenuShortcut>
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem>
